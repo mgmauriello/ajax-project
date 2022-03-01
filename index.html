@@ -8,11 +8,33 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body>
+<body class="main-background-color">
   <header>
+    <a class="header-logo" href="#" class="column-full">Yourseum</a>
+    <button class="nav-button">
+      <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
+    </button>
   </header>
   <main>
+    <div data-view="search-page" class="container center search-container center">
+      <form id="search-form" class="center">
+        <h1 class="center">Search Collection</h1>
+        <form>
+          <input required class="search-bar center" name="search" type="text" placeholder="Search for title or author">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="center">
+            <input type="submit" name="search" value="Search" class="search-button"></input>
+          </div>
+        </form>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
