@@ -30,10 +30,6 @@ body, main {
   display: block;
 }
 
-.main-background-color {
-  background-color: #202124;
-}
-
 .center {
   justify-content: center;
   align-items: center;
@@ -43,8 +39,11 @@ body, main {
 @media screen and (min-width: 576px) {
   .container {
     max-width: 900px;
+    width: 100%;
   }
-
+  header {
+    max-width: 100%;
+  }
   .column-full,
   .column-half {
     padding: 0 0.75rem;

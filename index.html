@@ -15,15 +15,19 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body class="main-background-color">
-  <header>
-    <a class="header-logo" data-view="search-page" href="#search-anchor" class="column-full">Yourseum</a>
-    <button class="nav-button">
+<body>
+  <header data-view="search-page" class="view">
+    <a class="header-logo" data-view="search-page" href="#search-anchor" class="column-full">YOURSEUM</a>
+    <!-- <button class="nav-button">
       <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
-    </button>
+    </button> -->
   </header>
   <main>
-    <div data-view="search-page" class="container search-container center">
+    <div class="hidden opening-page container center" data-view="opening-page">
+      <h1 class="opener">YOURSEUM</h1>
+      <button type="button" name="search" value="Enter" class="enter-button"></button>
+    </div>
+    <div data-view="search-page" class="view container form-search search-container center">
       <form id="search-form" class="center">
         <h1 class="center">Search Collection</h1>
         <form>
