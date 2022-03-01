@@ -1,13 +1,7 @@
 .hidden {
   display: none !important;
 }
-html, body {
-  min-height: 100%;
-}
 
-body, main {
-  height:100vh;
-}
 .container {
   max-width: 575px;
   margin: 0 auto;
