@@ -32,7 +32,9 @@
               <form>
                 <div class="input-icon">
                   <i class="fa-solid fa-magnifying-glass"></i>
-                  <input required id="search" class="search-bar center" name="search" type="text" placeholder="Search for title or author">
+                  <input
+                    required id="search" class="search-bar center" name="search"
+                    type="text" placeholder="Search for title or author">
                 </div>
                 <div class="center">
                   <input type="submit" name="search" value="Search" class="search-button"></input>
@@ -43,8 +45,17 @@
         </div>
       </form>
     </div>
-    <div id="result">
-
+    <div data-view="search-results" id="results" class="container">
+      <h2>Search results for ""</h2>
+      <div class="grid">
+        <div class="card-wrapper grid">
+          <div class="card result-description">
+            <img class="result-img" src="https://art.thewalters.org/images/art/large/l_ps1_372463_fnt_dd_t11-28.jpg">
+            <p class="result-description">Title text</p>
+            <p class="result-description">Name of art</p>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
