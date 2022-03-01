@@ -17,18 +17,20 @@
 </head>
 <body class="main-background-color">
   <header>
-    <a class="header-logo" href="#" class="column-full">Yourseum</a>
+    <a class="header-logo" data-view="search-page" href="#search-anchor" class="column-full">Yourseum</a>
     <button class="nav-button">
       <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
     </button>
   </header>
   <main>
-    <div data-view="search-page" class="container center search-container center">
+    <div data-view="search-page" class="container search-container center">
       <form id="search-form" class="center">
         <h1 class="center">Search Collection</h1>
         <form>
-          <input required class="search-bar center" name="search" type="text" placeholder="Search for title or author">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="input-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input required class="search-bar center" name="search" type="text" placeholder="Search for title or author">
+          </div>
           <div class="center">
             <input type="submit" name="search" value="Search" class="search-button"></input>
           </div>

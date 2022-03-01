@@ -40,19 +40,7 @@ body, main {
   text-align: center;
 }
 
-header {
-  height: 39px;
-  background-color: #343a40;
-  margin: 0;
-  line-height: 35px;
-  font-weight: 300;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   .container {
     max-width: 900px;
   }
