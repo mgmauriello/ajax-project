@@ -1,13 +1,10 @@
 var $searchForm = document.querySelector('#search-form');
+var $search = document.querySelector('#search')
 $searchForm.addEventListener('submit', handleSubmit);
-
-function selectElement(selector) {
-  return document.querySelector(selector)
-}
 
 function handleSubmit(event) {
   event.preventDefault();
-  var query = selectElement('#search').value
+  var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var result = ''
   var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
