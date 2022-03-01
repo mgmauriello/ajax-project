@@ -23,22 +23,24 @@
     </button> -->
   </header>
   <main>
-    <div class="hidden opening-page container center" data-view="opening-page">
-      <h1 class="opener">YOURSEUM</h1>
-      <button type="button" name="search" value="Enter" class="enter-button"></button>
-    </div>
     <div data-view="search-page" class="view container form-search search-container center">
-      <form id="search-form" class="center">
-        <h1 class="center">Search Collection</h1>
-        <form>
-          <div class="input-icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input required class="search-bar center" name="search" type="text" placeholder="Search for title or author">
+      <form id="search-form" class="search-container">
+        <div class="column-half margin-auto">
+          <div class="row center search-margin">
+            <div class="center">
+              <h1 class="center">Search Collection</h1>
+              <form>
+                <div class="input-icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input required class="search-bar center" name="search" type="text" placeholder="Search for title or author">
+                </div>
+                <div class="center">
+                  <input type="submit" name="search" value="Search" class="search-button"></input>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="center">
-            <input type="submit" name="search" value="Search" class="search-button"></input>
-          </div>
-        </form>
+        </div>
       </form>
     </div>
   </main>
