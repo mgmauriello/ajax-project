@@ -34,7 +34,7 @@ function handleSubmit(event) {
       $results.appendChild(render)
     }
   });
-  $resultSearchText.innerText = 'Search results for ' + '"' + $search.value + '"';
+  $resultSearchText.textContent = 'Search results for ' + '"' + $search.value + '"';
   data.search = $search.value
 
   $searchForm.reset();
@@ -64,12 +64,12 @@ function renderResults(result) {
 
   var $resultName = document.createElement('p');
   $resultName.className = 'result-description';
-  $resultName.innerText = result.Creator;
+  $resultName.textContent = result.Creator;
   $card.appendChild($resultName);
 
   var $resultTitle = document.createElement('p');
   $resultTitle.className = 'result-description';
-  $resultTitle.innerText = result.Title;
+  $resultTitle.textContent = result.Title;
   $card.appendChild($resultTitle);
 
   return $objectListing;
