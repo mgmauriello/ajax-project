@@ -16,8 +16,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-  <header>
-    <a class="header-logo" data-view="search-page" href="#search-anchor" class="column-full">YOURSEUM</a>
+  <header class="header-container">
+    <a class="header-logo search-page" data-view="search-page" href="#search-page" class="column-full">YOURSEUM</a>
     <!-- <button class="nav-button">
       <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
     </button> -->
@@ -45,11 +45,9 @@
         </div>
       </form>
     </div>
-    <div data-view="search-results" id="results" class="container grid">
+    <div data-view="search-results" id="results" class="view hidden">
       <h2 class="result-search-text"></h2>
-      <div>
-
-      </div>
+      <div id="object-listing" class="container grid">
     </div>
   </main>
   <script src="js/data.js"></script>

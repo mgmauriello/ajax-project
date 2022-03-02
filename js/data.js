@@ -9,14 +9,15 @@ var data = {
   searchPageView: ''
 };
 
-// var previousDataJSON = localStorage.getItem('results-local-storage');
+// var previousResultsJSON = localStorage.getItem('results-list');
 
-// if (previousDataJSON !== null) {
-//   data = JSON.parse(previousDataJSON);
+// if (previousResultsJSON !== null) {
+//   data = JSON.parse(previousResultsJSON);
 // }
 
-window.addEventListener('beforeunload', function (event) {
-  var dataJSON = JSON.stringify(data);
+// function handleUnload(event) {
+//   var resultsJSON = JSON.stringify(data);
+//   localStorage.setItem('results-list', resultsJSON);
+// }
 
-  localStorage.setItem('results-local-storage', dataJSON);
-});
+// window.addEventListener('beforeunload', handleUnload);

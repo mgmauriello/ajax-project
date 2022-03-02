@@ -1,8 +1,11 @@
 var $searchForm = document.querySelector('#search-form');
-var $search = document.querySelector('#search')
-var $results = document.querySelector('#results')
+var searchAnchor = document.querySelector('.search-page')
+var $search = document.querySelector('#search');
+var $results = document.querySelector('#results');
+var $view = document.querySelectorAll('.view');
 var $resultSearchText = document.querySelector('.result-search-text')
 var $container = document.querySelectorAll('.container');
+var $objectListing = document.querySelector('#object-listing');
 
 $searchForm.addEventListener('submit', handleSubmit);
 
@@ -36,15 +39,15 @@ function handleSubmit(event) {
 
   $searchForm.reset();
   xhrSearch.send();
+  viewSwap('search-results');
+
 }
 // user can view search
 
 function renderResults(result) {
-  var $div = document.createElement('div');
-
   var $grid = document.createElement('div');
   $grid.className = 'grid';
-  $div.appendChild($grid);
+  $objectListing.appendChild($grid);
 
   var $cardWrapper = document.createElement('div');
   $cardWrapper.className = 'card-wrapper grid';
@@ -69,39 +72,28 @@ function renderResults(result) {
   $resultTitle.innerText = result.Title;
   $card.appendChild($resultTitle);
 
-  return $div;
-}
-
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   // if (data.view === '') {
-//   //   viewSwap('search-page')
-//   // } else {
-//   //   viewSwap(data.view)
-//   // }
-
-//   for (var i = 0; i < data.results.length; i++) {
-//     var resultsData = renderResults(data.results[i]);
-//     $results.appendChild(resultsData);
-//   }
-//   // swapViews(data.view);
-// });
-
-function dataView(event) {
-  var $dataView = event.target.getAttribute('data-view');
-
-  if ($dataView !== '') {
-    viewSwap($dataView);
-  }
+  return $objectListing;
 }
 
 function viewSwap(string) {
-  for (var i = 0; i < $container.length; i++) {
-    if ($container[i].dataset.view === string) {
-      $container[i].className = 'container';
-      var currentView = $container[i].dataset.view;
-      data.view = currentView;
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') !== string) {
+      $view[i].className = 'view hidden';
+      data.view = $view[i].getAttribute('data-view');
     } else {
-      $container[i].className = 'container hidden';
+      $view[i].className = 'view';
     }
   }
 }
+searchAnchor.addEventListener('click', function (event) {
+  viewSwap('search-page');
+});
+// window.addEventListener('DOMContentLoaded', handleLoad);
+
+// function handleLoad(event){
+//     for (var i = 0; i < data.results.length; i++) {
+//     var render = renderResults(data.results[i]);
+//     $results.appendChild(render);
+//   }
+//   viewSwap(data.view);
+// };

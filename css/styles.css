@@ -20,7 +20,6 @@ a {
 .header-logo {
   color: white;
   font-weight: bold;
-  font-size: 1.5rem;
 }
 
 header {
@@ -75,18 +74,19 @@ form {
 .search-bar {
   display: flex;
   z-index: 3;
-  height: 44px;
   background: #202124;
   border: 1px solid #5f6368;
   box-shadow: none;
   border-radius: 24px;
   margin: 0 auto;
   padding-left: 34px;
+  color: white;
+  text-align: left;
+  height: 44px;
+  font-size: 14px;
   width: 638px;
   max-width: 584px;
-  color: white;
-  font-size: 14px;
-  text-align: left;
+  min-width: 300px;
 }
 
 .fa-magnifying-glass {
@@ -105,8 +105,8 @@ input::placeholder {
 h2 {
   color: white;
   position: relative;
+  margin-left: 5%;
   font-size: 1.5em;
-  right: 77px;
 }
 .card-wrapper {
   text-align: left;
@@ -119,6 +119,11 @@ h2 {
 	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 	grid-template-rows: 1fr auto;
 	gap: 1.5rem;
+}
+
+#object-listing {
+  padding: 2px 2px 80px 2px;
+  width: 1013px;
 }
 
 .card {
