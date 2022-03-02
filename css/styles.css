@@ -20,7 +20,6 @@ a {
 .header-logo {
   color: white;
   font-weight: bold;
-  font-size: 1.5rem;
 }
 
 header {
@@ -74,29 +73,86 @@ form {
 }
 .search-bar {
   display: flex;
-  z-index: 3;
-  height: 44px;
   background: #202124;
   border: 1px solid #5f6368;
   box-shadow: none;
   border-radius: 24px;
   margin: 0 auto;
   padding-left: 34px;
-  width: 638px;
-  max-width: 584px;
   color: white;
-  font-size: 14px;
   text-align: left;
+  height: 44px;
+  font-size: 14px;
 }
 
 .fa-magnifying-glass {
   color: white;
   text-align: left;
   position: relative;
-  top: 32px;
-  right: 272px;
+  left: 26px;
+}
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 18px;
+
+}
+
+input.search-bar {
+  width: 100%;
+  max-width: 600px;
 }
 
 input::placeholder {
   text-align: left;
+}
+
+/* search results */
+h2 {
+  color: white;
+  position: relative;
+  margin-left: 5%;
+  font-size: 1.5em;
+}
+.card-wrapper {
+  text-align: left;
+}
+
+.grid {
+	display: grid;
+	max-width: 80rem;
+	margin: 0 auto;
+	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+	grid-template-rows: 1fr auto;
+	gap: 1.5rem;
+}
+
+#object-listing {
+  padding: 2px 2px 2px;
+}
+
+.card {
+  max-width: 18rem;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+.result-img {
+  width: 100%;
+  box-shadow: 4px 3px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.result-description {
+  font-size: .75rem;
+  margin: 3px;
+  text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
+  color: white;
+
+}
+
+.card:hover {
+  transform: scale(1.1);
 }

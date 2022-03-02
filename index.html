@@ -16,35 +16,36 @@
     crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-  <header>
-    <a class="header-logo" data-view="search-page" href="#search-anchor" class="column-full">YOURSEUM</a>
+  <header class="header-container">
+    <a class="header-logo search-page" data-view="search-page" href="#" class="column-full">YOURSEUM</a>
     <!-- <button class="nav-button">
       <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
     </button> -->
   </header>
   <main>
-    <div data-view="search-page" class="view container form-search search-container center">
-      <form id="search-form" class="search-container">
-        <div class="column-half margin-auto">
-          <div class="row center search-margin">
-            <div class="center">
-              <h1 class="center">Search Collection</h1>
-              <form>
-                <div class="input-icon">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                  <input required id="search" class="search-bar center" name="search" type="text" placeholder="Search for title or author">
-                </div>
-                <div class="center">
-                  <input type="submit" name="search" value="Search" class="search-button"></input>
-                </div>
-              </form>
-            </div>
+    <div data-view="search-page" class="view">
+      <div class="container form-search search-container center">
+        <form id="search-form" class="search-container">
+          <div class="column-half margin-auto">
+            <h1 class="search-heading center">Search Collection</h1>
+            <form class="media">
+              <div class="input-wrapper center">
+                <div class="fa-solid fa-magnifying-glass"></div>
+                <input
+                  required id="search" class="search-bar center" name="search"
+                  type="text" placeholder="Search for title or author">
+              </div>
+              <div class="center">
+                <input type="submit" name="search" value="Search" class="search-button"></input>
+              </div>
+            </form>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-    <div id="result">
-
+    <div data-view="search-results" id="results" class="view hidden">
+      <h2 class="result-search-text"></h2>
+      <div id="object-listing" class="container grid">
     </div>
   </main>
   <script src="js/data.js"></script>
