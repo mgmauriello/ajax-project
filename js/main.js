@@ -88,12 +88,3 @@ function viewSwap(string) {
 searchAnchor.addEventListener('click', function (event) {
   viewSwap('search-page');
 });
-// window.addEventListener('DOMContentLoaded', handleLoad);
-
-// function handleLoad(event){
-//     for (var i = 0; i < data.results.length; i++) {
-//     var render = renderResults(data.results[i]);
-//     $results.appendChild(render);
-//   }
-//   viewSwap(data.view);
-// };
