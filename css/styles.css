@@ -137,7 +137,7 @@ h2 {
   box-shadow: 4px 3px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
-p.result-description {
+.result-description {
   font-size: .75rem;
   margin: 3px;
   text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
