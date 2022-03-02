@@ -13,11 +13,18 @@
   flex-wrap: wrap;
 }
 
-.column-full,
-.column-half {
+.column-full {
   width: 100%;
 }
-
+.column-half {
+  width: 50%;
+}
+.column-forty {
+  width: 40%;
+}
+.column-sixty {
+  width: 60%;
+}
 .search-container {
   padding: 80px 0 85px;
   display: block;
