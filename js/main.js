@@ -6,6 +6,7 @@ var $view = document.querySelectorAll('.view');
 var $resultSearchText = document.querySelector('.result-search-text')
 var $container = document.querySelectorAll('.container');
 var $objectListing = document.querySelector('#object-listing');
+var $display = document.querySelector('#display');
 
 $searchForm.addEventListener('submit', handleSubmit);
 
@@ -74,6 +75,53 @@ function renderResults(result) {
 
   return $objectListing;
 }
+// user can view display card
+
+function renderDisplay(result) {
+  var $displayCard = document.createElement('div');
+  $displayCard.className = 'display-card';
+  $display.appendChild($displayCard);
+
+  var $columnForty = document.createElement('div');
+  $columnForty.className = 'column-forty';
+  $displayCard.appendChild($columnForty);
+
+  var $img = document.createElement('img');
+  $img.className = 'result-img';
+  $img.setAttribute('src', result.PrimaryImage.Raw);
+  $columnForty.appendChild($img);
+
+  var $pieceDescription = document.createElement('div');
+  $pieceDescription.className = 'column-sixty piece-description';
+  $displayCard.appendChild($pieceDescription);
+
+  var $displayTitle = document.createElement('p');
+  $displayTitle.className = 'display-title';
+  $displayTitle.textContent = result.Title;
+  $pieceDescription.appendChild($displayTitle);
+
+  var $displayCreator = document.createElement('p');
+  $displayCreator.className = 'result-description';
+  $displayCreator.textContent = result.Title;
+  $pieceDescription.appendChild($displayCreator);
+
+  var $displayMedium = document.createElement('p');
+  $displayMedium.className = 'display-medium';
+  $displayMedium.textContent = result.Medium;
+  $pieceDescription.appendChild($displayMedium);
+
+  var $displayDesc = document.createElement('p');
+  $displayDesc.className = 'result-description';
+  $displayDesc.textContent = result.Description;
+  $pieceDescription.appendChild($displayDesc);
+
+  var $heartIcon = document.createElement('i');
+  $heartIcon.className = 'fa-regular fa-heart'
+  $pieceDescription.appendChild($heartIcon);
+
+  return $displayCard;
+}
+
 
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
