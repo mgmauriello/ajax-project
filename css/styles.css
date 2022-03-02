@@ -73,7 +73,6 @@ form {
 }
 .search-bar {
   display: flex;
-  z-index: 3;
   background: #202124;
   border: 1px solid #5f6368;
   box-shadow: none;
@@ -84,17 +83,23 @@ form {
   text-align: left;
   height: 44px;
   font-size: 14px;
-  width: 638px;
-  max-width: 584px;
-  min-width: 300px;
 }
 
 .fa-magnifying-glass {
   color: white;
   text-align: left;
   position: relative;
-  top: 32px;
-  right: 272px;
+  left: 26px;
+}
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 18px;
+
+}
+
+input.search-bar {
+  width: 100%;
 }
 
 input::placeholder {
