@@ -32,12 +32,15 @@
   text-align: center;
 }
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
-  .container {
+@media screen and (max-width: 768px) {
+  .container, .grid, #object-listing {
     min-width: 375px;
   }
-  .search-heading {
+  .search-heading  {
     font-size: 2rem;
+  }
+  .result-search-text {
+    font-size: 1rem;
   }
 
 }
