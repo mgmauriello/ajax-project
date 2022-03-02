@@ -36,9 +36,6 @@
   .container {
     min-width: 375px;
   }
-  .media {
-    min-width: 100px;
-  }
   .search-heading {
     font-size: 2rem;
   }

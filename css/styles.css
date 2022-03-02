@@ -100,6 +100,7 @@ form {
 
 input.search-bar {
   width: 100%;
+  max-width: 600px;
 }
 
 input::placeholder {
