@@ -158,12 +158,7 @@ h2 {
 }
 
 /* display */
-.modal-background {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  left: 0;
-}
+
 .display-card {
   width: 876px;
   height: 431px;
@@ -172,38 +167,47 @@ h2 {
   margin: 0 20%;
   box-shadow: 5px 5px 40px 1px grey;
   display: flex;
-  }
-  .display-medium {
-    font: .75rem;
-    color: #535151;
-    font-style: italic;
-  }
-  .display-title {
-    font-size: 1.2rem;
-  }
-  .display-creator {
-    font-size: .9rem;
-  }
-  .display-desc {
-    font-size: .89rem;
-    padding: 10px 0;
-  }
+}
 
-.view-art {
+.display-medium {
+  font: .75rem;
+  color: #535151;
+  font-style: italic;
+}
+
+.display-title {
+  font-size: 1.2rem;
+}
+
+.display-creator {
+  font-size: .9rem;
+}
+
+.display-desc {
+  font-size: .89rem;
+  padding: 10px 0;
+}
+
+.display-img {
   box-shadow: 4px 3px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.return-results-text {
+  cursor: pointer;
+}
+
 
 .column-forty> img {
   width: 330px;
   height: 399px;
   margin: 10px 10px 0;
 }
+
 .piece-description {
  margin: 12px;
+ position: relative;
 }
 
 .fa-heart {
   position: relative;
   left: 95%;
-  top: 130px;
 }

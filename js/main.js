@@ -17,7 +17,6 @@ function searchCollection(event) {
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
-  console.log(urlSearch);
 
   var $resultList = document.querySelectorAll('.results');
   for (var i = 0; i < $resultList.length; i++) {
@@ -30,7 +29,6 @@ function searchCollection(event) {
   xhrSearch.open('GET', urlSearch);
   xhrSearch.responseType = 'json';
   xhrSearch.addEventListener('load', function () {
-    console.log(xhrSearch.response);
     for (var r = 0; r < xhrSearch.response.Items.length; r++) {
       data.results.push(xhrSearch.response.Items[r]);
       var render = renderResults(xhrSearch.response.Items[r]);
@@ -79,25 +77,22 @@ function renderResults(result) {
   $resultTitle.textContent = result.Title;
   $card.appendChild($resultTitle);
 
-  var $iconItem = document.createElement('i');
-  $iconItem.className = 'fa-solid fa-asterisk icon-add'
-  $card.appendChild($iconItem)
-
   return $objectListing;
 }
 // user can view display card
 
 $results.addEventListener('click', function (event) {
-  console.log(event.target.className);
   if (event.target.className === 'result-img') {
     showDisplayDetails(event);
+  }
+  var $previousDisplay = document.querySelectorAll('#detail-page-render');
+
+  for (var i = 0; i < $previousDisplay.length; i++) {
+    $previousDisplay[i].remove();
   }
 }, false);
 
 function showDisplayDetails(event) {
-  console.log("Running showDisplayDetails function")
-  console.log(event.target.closest('div').getAttribute('data-entry-id'));
-
   var $objectID = event.target.closest('div').getAttribute('data-entry-id')
   var xhr = new XMLHttpRequest();
   var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
@@ -105,10 +100,7 @@ function showDisplayDetails(event) {
   xhr.open('GET', apiEndpoint);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    console.log(xhr.response);
-
-    var selectedObj = xhr.response;
-    var $displayDetails = renderDisplay(selectedObj);
+    var $displayDetails = renderDisplay(xhr.response.Items[0]);
     $display.appendChild($displayDetails);
   });
   xhr.send();
@@ -118,19 +110,24 @@ function showDisplayDetails(event) {
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
   $displayCard.className = 'display-card';
+  $displayCard.setAttribute('id', 'detail-page-render')
 
   var $columnForty = document.createElement('div');
   $columnForty.className = 'column-forty';
   $displayCard.appendChild($columnForty);
 
-  // var $img = document.createElement('img');
-  // $img.className = 'display-img';
-  // $img.setAttribute('src', result.PrimaryImage.Raw);
-  // $columnForty.appendChild($img);
+  var $img = document.createElement('img');
+  $img.className = 'display-img';
+  $img.setAttribute('src', result.PrimaryImage.Raw);
+  $columnForty.appendChild($img);
 
   var $pieceDescription = document.createElement('div');
   $pieceDescription.className = 'column-sixty piece-description';
   $displayCard.appendChild($pieceDescription);
+
+  var $heartIcon = document.createElement('i');
+  $heartIcon.className = 'fa-regular fa-heart'
+  $pieceDescription.appendChild($heartIcon);
 
   var $displayTitle = document.createElement('p');
   $displayTitle.className = 'display-title';
@@ -149,12 +146,8 @@ function renderDisplay(result) {
 
   var $displayDesc = document.createElement('p');
   $displayDesc.className = 'display-desc';
-  $displayDesc.innerText = result.Description;
+  $displayDesc.textContent = result.Description;
   $pieceDescription.appendChild($displayDesc);
-
-  var $heartIcon = document.createElement('i');
-  $heartIcon.className = 'fa-regular fa-heart'
-  $pieceDescription.appendChild($heartIcon);
 
   return $displayCard;
 }
@@ -172,7 +165,6 @@ function viewSwap(string) {
 
 function dataView(event) {
   var $dataView = event.target.getAttribute('data-view');
-
   if ($dataView !== '') {
     viewSwap($dataView);
   }

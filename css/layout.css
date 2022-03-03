@@ -40,14 +40,17 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container, .grid, #object-listing {
+  .container,
+  .grid,
+  #object-listing,
+  #display-page {
     min-width: 375px;
   }
   .search-heading  {
     font-size: 2rem;
   }
-  .result-search-text {
+  .result-search-text,
+  .return-results-text, {
     font-size: 1rem;
   }
-
 }
