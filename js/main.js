@@ -1,26 +1,39 @@
 var $searchForm = document.querySelector('#search-form');
-var searchAnchor = document.querySelector('.search-page')
+var searchAnchor = document.querySelector('.search-page');
 var $search = document.querySelector('#search');
 var $results = document.querySelector('#results');
 var $view = document.querySelectorAll('.view');
-var $resultSearchText = document.querySelector('.result-search-text')
+var $resultSearchText = document.querySelector('.result-search-text');
 var $container = document.querySelectorAll('.container');
 var $objectListing = document.querySelector('#object-listing');
-var $display = document.querySelector('#display');
+var $display = document.querySelector('#display-page');
+var $goBack = document.querySelector('#go-back');
+var $resultImg = document.querySelector('.result-img');
 
-$searchForm.addEventListener('submit', handleSubmit);
+$searchForm.addEventListener('submit', searchCollection);
 
-function handleSubmit(event) {
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.results.length; i++) {
+    var entriesData = renderResults(data.results[i]);
+    $results.appendChild(entriesData);
+  }
+  var renderPreviousDetail = renderDisplay(data.detail);
+  $display.appendChild(renderPreviousDetail);
+  viewSwap(data.view);
+});
+
+function searchCollection(event) {
   event.preventDefault();
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
   console.log(urlSearch);
 
-  var $resultList = document.querySelectorAll('.results')
+  var $resultList = document.querySelectorAll('.results');
   for (var i = 0; i <$resultList.length; i++) {
     $resultList[i].remove();
   }
+  data.nextResultId = 0;
   data.results = [];
 
   var xhrSearch = new XMLHttpRequest();
@@ -31,23 +44,26 @@ function handleSubmit(event) {
     console.log(xhrSearch.response);
     for (var r = 0; r < xhrSearch.response.Items.length; r++) {
       data.results.push(xhrSearch.response.Items[r]);
-      var render = renderResults(xhrSearch.response.Items[r])
-      $results.appendChild(render)
+      var render = renderResults(xhrSearch.response.Items[r]);
+      $results.appendChild(render);
+      data.nextResultId
     }
   });
+
   $resultSearchText.textContent = 'Search results for ' + '"' + $search.value + '"';
   data.search = $search.value
 
   $searchForm.reset();
   xhrSearch.send();
-  viewSwap('search-results');
 
+  viewSwap('search-results');
 }
 // user can view search
 
 function renderResults(result) {
   var $grid = document.createElement('div');
   $grid.className = 'grid';
+  $grid.setAttribute('result-id', data.nextResultId)
   $objectListing.appendChild($grid);
 
   var $cardWrapper = document.createElement('div');
@@ -56,12 +72,16 @@ function renderResults(result) {
 
   var $card = document.createElement('div');
   $card.className = 'card result-description';
+  $card.setAttribute('data-view', 'result-display');
+  $card.setAttribute('result-id', data.nextResultId);
   $cardWrapper.appendChild($card);
 
   var $img = document.createElement('img');
   $img.className = 'result-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
   $card.appendChild($img);
+  $img.setAttribute('data-id', result.ObjectID);
+
 
   var $resultName = document.createElement('p');
   $resultName.className = 'result-description';
@@ -80,6 +100,7 @@ function renderResults(result) {
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
   $displayCard.className = 'display-card';
+  $displayCard.setAttribute('id', 'detail-page-render')
   $display.appendChild($displayCard);
 
   var $columnForty = document.createElement('div');
@@ -87,7 +108,7 @@ function renderDisplay(result) {
   $displayCard.appendChild($columnForty);
 
   var $img = document.createElement('img');
-  $img.className = 'result-img';
+  $img.className = 'display-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
   $columnForty.appendChild($img);
 
@@ -101,8 +122,8 @@ function renderDisplay(result) {
   $pieceDescription.appendChild($displayTitle);
 
   var $displayCreator = document.createElement('p');
-  $displayCreator.className = 'result-description';
-  $displayCreator.textContent = result.Title;
+  $displayCreator.className = 'rdisplay-creator';
+  $displayCreator.textContent = result.Creator;
   $pieceDescription.appendChild($displayCreator);
 
   var $displayMedium = document.createElement('p');
@@ -111,7 +132,7 @@ function renderDisplay(result) {
   $pieceDescription.appendChild($displayMedium);
 
   var $displayDesc = document.createElement('p');
-  $displayDesc.className = 'result-description';
+  $displayDesc.className = 'display-desc';
   $displayDesc.textContent = result.Description;
   $pieceDescription.appendChild($displayDesc);
 
@@ -122,6 +143,28 @@ function renderDisplay(result) {
   return $displayCard;
 }
 
+$display.addEventListener('click', function (event) {
+  var $previousRender = document.querySelectorAll('#detail-page-render');
+
+  for (var d = 0; d < $previousRender.length; d++) {
+    $previousRender[d].remove();
+  }
+
+  var $dataView = event.target.getAttribute('data-view');
+  if (event.target.nodeName === 'IMG') {
+    console.log('hello')
+    viewSwap($dataView);
+  }
+
+  var $resultId = event.target.getAttribute('result-id');
+
+  var render = renderDisplay(data.results[$resultId]);
+  $detailPageContainer.appendChild(render);
+  data.detail = data.results[$resultId];
+
+});
+
+// view swapping
 
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
@@ -133,6 +176,19 @@ function viewSwap(string) {
     }
   }
 }
+
+function dataView(event) {
+  var $dataView = event.target.getAttribute('data-view');
+
+  if ($dataView !== '') {
+    viewSwap($dataView);
+  }
+}
+
 searchAnchor.addEventListener('click', function (event) {
   viewSwap('search-page');
+});
+
+$goBack.addEventListener('click', function (event) {
+  viewSwap('search-results');
 });

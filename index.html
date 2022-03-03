@@ -23,10 +23,14 @@
     </button>
   </header>
   <main>
-    <div data-view="search-page" class="view">
-      <div class="container form-search search-container center">
+    <div data-view="result-display" id="display-page" class="view hidden">
+      <h2 id="go-back" class="result-search-text">Back</h2>
+    </div>
+
+    <div data-view="search-page" class="view" id="search-page">
+      <div id="searching" class="container form-search search-container center">
         <form id="search-form" class="search-container">
-          <div class="column-half margin-auto">
+          <div class="margin-auto">
             <h1 class="search-heading center">Search Collection</h1>
             <form class="media">
               <div class="input-wrapper center">
@@ -44,29 +48,9 @@
       </div>
     </div>
 
-    <!-- <div data-view="search-results" id="results" class="view hidden">
+    <div data-view="search-results" id="results" class="view hidden">
       <h2 class="result-search-text"></h2>
       <div id="object-listing" class="container grid">
-    </div> -->
-
-    <div data-view="result-display" id="display" class="view">
-      <h2 class="result-search-text">Back</h2>
-      <div class="display-card">
-        <div class="column-forty">
-          <img class="view-art" src="https://art.thewalters.org/images/art/large/l_ps3_51971_fnt_dd_jp09.jpg">
-        </div>
-        <div class="column-sixty piece-description">
-          <p class="display-title">Kashira with a Gourd and a Horse</p>
-          <p class="display-creator">Tamagawa Hôju (Japanese, active 19th century)</p>
-          <p class="display-medium">copper, gold | L: 1 7/16 in. (3.6 cm)</p>
-          <p class="display-desc">The kashira is designed in the shape of a gourd. A horse is shown emerging from the
-            side of the gourd. This is an illustration of the idiom "like a horse coming out of a gourd," which is used
-            to describe unexpected things. The saying may have developed from stories of the Chinese immortal Chokaro
-            (Ch. Zhang Guo [Chang Kuo]) who carried his magical mule in a gourd. The kashira is part of a set with
-            Walters 51.970.</p>
-          <i class="fa-regular fa-heart"></i>
-        </div>
-      </div>
     </div>
 
   </main>
