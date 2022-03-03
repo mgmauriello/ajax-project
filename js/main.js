@@ -124,10 +124,6 @@ function renderDisplay(result) {
   $pieceDescription.className = 'column-sixty piece-description';
   $displayCard.appendChild($pieceDescription);
 
-  var $heartIcon = document.createElement('i');
-  $heartIcon.className = 'fa-regular fa-heart'
-  $pieceDescription.appendChild($heartIcon);
-
   var $displayTitle = document.createElement('p');
   $displayTitle.className = 'display-title';
   $displayTitle.textContent = result.Title;
