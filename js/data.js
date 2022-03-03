@@ -4,7 +4,5 @@ var data = {
   results: [],
   detail: null,
   removeId: 0,
-  nextResultId: 0,
   view: '',
-  searchPageView: ''
 };

@@ -156,3 +156,57 @@ h2 {
 .card:hover {
   transform: scale(1.1);
 }
+
+/* display */
+
+#display-page {
+  width: 100%;
+}
+.display-card {
+  max-width: 876px;
+  width: 100%;
+  height: 431px;
+  background: #EAEAEA;
+  border-radius: 10px;
+  margin: 0 auto;
+  box-shadow: 5px 5px 40px 1px grey;
+  display: flex;
+}
+
+.display-medium {
+  font: .75rem;
+  color: #535151;
+  font-style: italic;
+}
+
+.display-title {
+  font-size: 1.2rem;
+}
+
+.display-creator {
+  font-size: .9rem;
+}
+
+.display-desc {
+  font-size: .89rem;
+  padding: 10px 0;
+}
+
+.display-img {
+  box-shadow: 4px 3px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.return-results-text {
+  cursor: pointer;
+}
+
+
+.column-display-img> img {
+  width: 330px;
+  height: 399px;
+  margin: 10px 10px 0;
+}
+
+.piece-description {
+ margin: 12px;
+ position: relative;
+}

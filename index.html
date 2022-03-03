@@ -17,16 +17,17 @@
 </head>
 <body>
   <header class="header-container">
-    <a class="header-logo search-page" data-view="search-page" href="#" class="column-full">YOURSEUM</a>
-    <!-- <button class="nav-button">
-      <a href="#collection-anchor" data-view="personal-collection">My Collection</a>
-    </button> -->
+    <a class="header-logo search-page" data-view="search-page" href="#" class="column-full">YOUSEUM</a>
   </header>
   <main>
-    <div data-view="search-page" class="view">
-      <div class="container form-search search-container center">
+    <div data-view="result-display" id="display-page" class="view hidden">
+      <h2 id="go-back" class="return-results-text">Back</h2>
+    </div>
+
+    <div data-view="search-page" class="view" id="search-page">
+      <div id="searching" class="container form-search search-container center">
         <form id="search-form" class="search-container">
-          <div class="column-half margin-auto">
+          <div class="margin-auto">
             <h1 class="search-heading center">Search Collection</h1>
             <form class="media">
               <div class="input-wrapper center">
@@ -43,10 +44,12 @@
         </form>
       </div>
     </div>
+
     <div data-view="search-results" id="results" class="view hidden">
       <h2 class="result-search-text"></h2>
       <div id="object-listing" class="container grid">
     </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
