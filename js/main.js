@@ -79,7 +79,7 @@ function renderResults(result) {
   $card.appendChild($resultTitle);
 
   var $iconItem = document.createElement('i');
-  $iconItem.className = 'fa-solid fa-asterisk icon-add'
+  $iconItem.className = 'fa-solid fa-asterisk'
   $card.appendChild($iconItem)
 
   return $objectListing;
@@ -88,26 +88,27 @@ function renderResults(result) {
 $display.addEventListener('click', showDisplayDetails);
 
 function showDisplayDetails(event) {
-  var $selectedItem = null;
-  if (event.target.matches('.icon-add')) {
-    $display.className = 'view';
-    $results.className = 'hidden'
-    $selectedItem = event.target.closest('div');
-    var $objectID = $selectedItem.getAttribute('data-entry-id');
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F' + $objectID);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', function () {
+  if (event.target.className === '.fa-solid fa-asterisk') {
+    console.log('hi')
+  var $objectID = parseInt(event.target.closest('div').getAttribute('data-entry-id'));
+    var xhrSearch = new XMLHttpRequest();
+    xhr.open('GET',
+    'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
+      + '&ObjectID=' + $objectID);
+    xhrSearch.responseType = 'json';
+    xhrSearch.addEventListener('load', function () {
       console.log(xhrSearch.response);
-
-      var selectedObj = xhr.response;
-      var $displayDetails= renderDisplay(selectedObj);
-      $display.appendChild($displayDetails);
+      for (var r = 0; r < xhrSearch.response.Items.length; r++) {
+        data.results.push(xhrSearch.response.Items[r].ApiObject);
+        var displayDetails = renderResults(xhrSearch.response.Items[r].ApiObject);
+        $display.appendChild($displayDetails);;
+      }
     });
     xhr.send();
+    viewSwap('result-display')
   }
 }
+
 
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
