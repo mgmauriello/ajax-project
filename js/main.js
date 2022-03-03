@@ -111,17 +111,17 @@ function renderDisplay(result) {
   $displayCard.className = 'display-card';
   $displayCard.setAttribute('id', 'detail-page-render')
 
-  var $columnForty = document.createElement('div');
-  $columnForty.className = 'column-forty';
-  $displayCard.appendChild($columnForty);
+  var $columnDisplayImg = document.createElement('div');
+  $columnDisplayImg.className = 'column-display-img';
+  $displayCard.appendChild($columnDisplayImg);
 
   var $img = document.createElement('img');
   $img.className = 'display-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
-  $columnForty.appendChild($img);
+  $columnDisplayImg.appendChild($img);
 
   var $pieceDescription = document.createElement('div');
-  $pieceDescription.className = 'column-sixty piece-description';
+  $pieceDescription.className = 'column-display-text piece-description';
   $displayCard.appendChild($pieceDescription);
 
   var $displayTitle = document.createElement('p');
