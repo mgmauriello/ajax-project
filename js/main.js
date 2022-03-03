@@ -41,7 +41,6 @@ function searchCollection(event) {
 
   $searchForm.reset();
   xhrSearch.send();
-
   viewSwap('search-results');
 }
 
