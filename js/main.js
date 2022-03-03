@@ -1,5 +1,5 @@
 var $searchForm = document.querySelector('#search-form');
-var searchAnchor = document.querySelector('.search-page');
+var $searchAnchor = document.querySelector('.search-page');
 var $search = document.querySelector('#search');
 var $results = document.querySelector('#results');
 var $view = document.querySelectorAll('.view');
@@ -20,7 +20,7 @@ function searchCollection(event) {
   console.log(urlSearch);
 
   var $resultList = document.querySelectorAll('.results');
-  for (var i = 0; i <$resultList.length; i++) {
+  for (var i = 0; i < $resultList.length; i++) {
     $resultList[i].remove();
   }
   data.results = [];
@@ -46,6 +46,7 @@ function searchCollection(event) {
 
   viewSwap('search-results');
 }
+
 // user can view search
 
 function renderResults(result) {
@@ -79,36 +80,40 @@ function renderResults(result) {
   $card.appendChild($resultTitle);
 
   var $iconItem = document.createElement('i');
-  $iconItem.className = 'fa-solid fa-asterisk'
+  $iconItem.className = 'fa-solid fa-asterisk icon-add'
   $card.appendChild($iconItem)
 
   return $objectListing;
 }
 // user can view display card
-$display.addEventListener('click', showDisplayDetails);
+
+$results.addEventListener('click', function (event) {
+  console.log(event.target.className);
+  if (event.target.className === 'result-img') {
+    showDisplayDetails(event);
+  }
+}, false);
 
 function showDisplayDetails(event) {
-  if (event.target.className === '.fa-solid fa-asterisk') {
-    console.log('hi')
-  var $objectID = parseInt(event.target.closest('div').getAttribute('data-entry-id'));
-    var xhrSearch = new XMLHttpRequest();
-    xhr.open('GET',
-    'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
-      + '&ObjectID=' + $objectID);
-    xhrSearch.responseType = 'json';
-    xhrSearch.addEventListener('load', function () {
-      console.log(xhrSearch.response);
-      for (var r = 0; r < xhrSearch.response.Items.length; r++) {
-        data.results.push(xhrSearch.response.Items[r].ApiObject);
-        var displayDetails = renderResults(xhrSearch.response.Items[r].ApiObject);
-        $display.appendChild($displayDetails);;
-      }
-    });
-    xhr.send();
-    viewSwap('result-display')
-  }
-}
+  console.log("Running showDisplayDetails function")
+  console.log(event.target.closest('div').getAttribute('data-entry-id'));
 
+  var $objectID = event.target.closest('div').getAttribute('data-entry-id')
+  var xhr = new XMLHttpRequest();
+  var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
+  var apiEndpoint = baseAPIEndpoint + '&ObjectID=' + $objectID;
+  xhr.open('GET', apiEndpoint);
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    console.log(xhr.response);
+
+    var selectedObj = xhr.response;
+    var $displayDetails = renderDisplay(selectedObj);
+    $display.appendChild($displayDetails);
+  });
+  xhr.send();
+  viewSwap('result-display');
+}
 
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
@@ -118,10 +123,10 @@ function renderDisplay(result) {
   $columnForty.className = 'column-forty';
   $displayCard.appendChild($columnForty);
 
-  var $img = document.createElement('img');
-  $img.className = 'display-img';
-  $img.setAttribute('src', result.PrimaryImage.Raw);
-  $columnForty.appendChild($img);
+  // var $img = document.createElement('img');
+  // $img.className = 'display-img';
+  // $img.setAttribute('src', result.PrimaryImage.Raw);
+  // $columnForty.appendChild($img);
 
   var $pieceDescription = document.createElement('div');
   $pieceDescription.className = 'column-sixty piece-description';
@@ -144,7 +149,7 @@ function renderDisplay(result) {
 
   var $displayDesc = document.createElement('p');
   $displayDesc.className = 'display-desc';
-  $displayDesc.textContent = result.Description;
+  $displayDesc.innerText = result.Description;
   $pieceDescription.appendChild($displayDesc);
 
   var $heartIcon = document.createElement('i');
@@ -153,29 +158,6 @@ function renderDisplay(result) {
 
   return $displayCard;
 }
-
-$display.addEventListener('click', function (event) {
-  var $previousRender = document.querySelectorAll('#detail-page-render');
-
-  for (var d = 0; d < $previousRender.length; d++) {
-    $previousRender[d].remove();
-  }
-
-  var $dataView = event.target.getAttribute('data-view');
-  if (event.target.nodeName === 'IMG') {
-    console.log('hello')
-    viewSwap($dataView);
-  }
-
-  var $resultId = event.target.getAttribute('result-id');
-
-  var render = renderDisplay(data.results[$resultId]);
-  $detailPageContainer.appendChild(render);
-  data.detail = data.results[$resultId];
-
-});
-
-// view swapping
 
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
@@ -196,7 +178,7 @@ function dataView(event) {
   }
 }
 
-searchAnchor.addEventListener('click', function (event) {
+$searchAnchor.addEventListener('click', function (event) {
   viewSwap('search-page');
 });
 
