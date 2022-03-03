@@ -18,6 +18,9 @@
 <body>
   <header class="header-container">
     <a class="header-logo search-page" data-view="search-page" href="#" class="column-full">YOUSEUM</a>
+    <button class="nav-button">
+      <a href="#collection-anchor" class="collection-page" data-view="personal-collection">My Collection</a>
+    </button>
   </header>
   <main>
     <div data-view="result-display" id="display-page" class="view hidden">
@@ -51,6 +54,13 @@
     </div>
 
   </main>
+  <div data-view="personal-collection" id="personal-collection" class="view hidden">
+    <h2 class="user-collection">My Collection</h2>
+  </div>
+  <!-- <div data-view="no-entries" class="view hidden">
+    <h2 class="user-collection">My Collection</h2>
+    <p class="no-entries-text">No entries have been recorded.</p>
+  </div> -->
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
