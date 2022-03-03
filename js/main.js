@@ -12,16 +12,6 @@ var $resultImg = document.querySelector('.result-img');
 
 $searchForm.addEventListener('submit', searchCollection);
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  for (var i = 0; i < data.results.length; i++) {
-    var entriesData = renderResults(data.results[i]);
-    $results.appendChild(entriesData);
-  }
-  var renderPreviousDetail = renderDisplay(data.detail);
-  $display.appendChild(renderPreviousDetail);
-  viewSwap(data.view);
-});
-
 function searchCollection(event) {
   event.preventDefault();
   var query = $search.value
@@ -33,7 +23,6 @@ function searchCollection(event) {
   for (var i = 0; i <$resultList.length; i++) {
     $resultList[i].remove();
   }
-  data.nextResultId = 0;
   data.results = [];
 
   var xhrSearch = new XMLHttpRequest();
@@ -46,7 +35,6 @@ function searchCollection(event) {
       data.results.push(xhrSearch.response.Items[r]);
       var render = renderResults(xhrSearch.response.Items[r]);
       $results.appendChild(render);
-      data.nextResultId
     }
   });
 
@@ -63,7 +51,7 @@ function searchCollection(event) {
 function renderResults(result) {
   var $grid = document.createElement('div');
   $grid.className = 'grid';
-  $grid.setAttribute('result-id', data.nextResultId)
+  $grid.setAttribute('data-entry-id', result.ObjectID)
   $objectListing.appendChild($grid);
 
   var $cardWrapper = document.createElement('div');
@@ -72,16 +60,13 @@ function renderResults(result) {
 
   var $card = document.createElement('div');
   $card.className = 'card result-description';
-  $card.setAttribute('data-view', 'result-display');
-  $card.setAttribute('result-id', data.nextResultId);
+  $card.setAttribute('data-entry-id', result.ObjectID)
   $cardWrapper.appendChild($card);
 
   var $img = document.createElement('img');
   $img.className = 'result-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
   $card.appendChild($img);
-  $img.setAttribute('data-id', result.ObjectID);
-
 
   var $resultName = document.createElement('p');
   $resultName.className = 'result-description';
@@ -93,15 +78,40 @@ function renderResults(result) {
   $resultTitle.textContent = result.Title;
   $card.appendChild($resultTitle);
 
+  var $iconItem = document.createElement('i');
+  $iconItem.className = 'fa-solid fa-asterisk icon-add'
+  $card.appendChild($iconItem)
+
   return $objectListing;
 }
 // user can view display card
+$display.addEventListener('click', showDisplayDetails);
+
+function showDisplayDetails(event) {
+  var $selectedItem = null;
+  if (event.target.matches('.icon-add')) {
+    $display.className = 'view';
+    $results.className = 'hidden'
+    $selectedItem = event.target.closest('div');
+    var $objectID = $selectedItem.getAttribute('data-entry-id');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F' + $objectID);
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', function () {
+      console.log(xhrSearch.response);
+
+      var selectedObj = xhr.response;
+      var $displayDetails= renderDisplay(selectedObj);
+      $display.appendChild($displayDetails);
+    });
+    xhr.send();
+  }
+}
 
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
   $displayCard.className = 'display-card';
-  $displayCard.setAttribute('id', 'detail-page-render')
-  $display.appendChild($displayCard);
 
   var $columnForty = document.createElement('div');
   $columnForty.className = 'column-forty';
@@ -122,7 +132,7 @@ function renderDisplay(result) {
   $pieceDescription.appendChild($displayTitle);
 
   var $displayCreator = document.createElement('p');
-  $displayCreator.className = 'rdisplay-creator';
+  $displayCreator.className = 'display-creator';
   $displayCreator.textContent = result.Creator;
   $pieceDescription.appendChild($displayCreator);
 

@@ -158,6 +158,12 @@ h2 {
 }
 
 /* display */
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .display-card {
   width: 876px;
   height: 431px;
