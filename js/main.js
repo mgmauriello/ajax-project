@@ -9,9 +9,10 @@ var $objectListing = document.querySelector('#object-listing');
 var $display = document.querySelector('#display-page');
 var $goBack = document.querySelector('#go-back');
 var $resultImg = document.querySelector('.result-img');
+$collectionAnchor = document.querySelector('.collection-page')
 
+// search collection
 $searchForm.addEventListener('submit', searchCollection);
-
 function searchCollection(event) {
   event.preventDefault();
   var query = $search.value
@@ -78,6 +79,7 @@ function renderResults(result) {
 
   return $objectListing;
 }
+
 // user can view display card
 
 $results.addEventListener('click', function (event) {
@@ -124,6 +126,22 @@ function renderDisplay(result) {
   $pieceDescription.className = 'column-display-text piece-description';
   $displayCard.appendChild($pieceDescription);
 
+  var $heartIcon = document.createElement('i');
+  $heartIcon.setAttribute('data-entry-id', result.ObjectID)
+  if (data.collections.length === 0) {
+    $heartIcon.className = 'fa-regular fa-heart';
+  } else {
+    for (var h = 0; h < data.collections.length; h++) {
+      if (result.ObjectID === data.collections[h].ObjectID) {
+        $heartIcon.className = 'fa-solid fa-heart red-heart';
+        break;
+      } else {
+        $heartIcon.className = 'fa-regular fa-heart'
+      }
+    }
+  }
+  $pieceDescription.appendChild($heartIcon);
+
   var $displayTitle = document.createElement('p');
   $displayTitle.className = 'display-title';
   $displayTitle.textContent = result.Title;
@@ -147,6 +165,49 @@ function renderDisplay(result) {
   return $displayCard;
 }
 
+// add to collection
+var $personalCollection = document.querySelector('#personal-collection')
+$collectionAnchor.addEventListener('click', function (event) {
+  if (data.collections !== 0) {
+    for (var c = 0; c < data.collections.length; c++) {
+      var renderCollections = renderResults(data.collections[c]);
+      $personalCollection.appendChild(renderCollections);
+    }
+  }
+  viewSwap('personal-collection')
+});
+
+$display.addEventListener('click', function (event) {
+  var $collectionId = event.target.getAttribute('data-entry-id');
+  $collectionId = parseInt($collectionId);
+  var $heart = document.querySelectorAll('i');
+
+  if ((event.target.className === 'fa-regular fa-heart')) {
+    console.log('hi')
+    for (var i = 0; i < data.results.length; i++) {
+      if (data.results[i].ObjectID === $collectionId) {
+        data.collections.push(data.results[i])
+      }
+    }
+  }
+  if (event.target.className = 'fa-regular fa-heart') {
+    event.target.className = 'fa-solid fa-heart red-heart';
+  }
+});
+
+$personalCollection.addEventListener('click', function (event) {
+  if (event.target.className === 'result-img') {
+    showDisplayDetails(event);
+  }
+  var $previousDisplay = document.querySelectorAll('#detail-page-render');
+
+  for (var i = 0; i < $previousDisplay.length; i++) {
+    $previousDisplay[i].remove();
+  }
+}, false);
+
+// view swapping
+var $noEntry = document.querySelector('.no-entries-text')
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') !== string) {
@@ -155,6 +216,12 @@ function viewSwap(string) {
     } else {
       $view[i].className = 'view';
     }
+  }
+
+  if (data.collections.length === 0) {
+    $noEntry.className = 'no-entries-text';
+  } else {
+    $noEntry.className = 'view hidden';
   }
 }
 

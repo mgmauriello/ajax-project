@@ -18,10 +18,13 @@
 <body>
   <header class="header-container">
     <a class="header-logo search-page" data-view="search-page" href="#" class="column-full">YOUSEUM</a>
+    <button class="nav-button">
+      <a href="#collection-anchor" class="collection-page" data-view="personal-collection">My Collection</a>
+    </button>
   </header>
   <main>
     <div data-view="result-display" id="display-page" class="view hidden">
-      <h2 id="go-back" class="return-results-text">Back</h2>
+      <h2 id="go-back" class="return-results-text"><i class="fa-solid fa-chevron-left"></i>Back</h2>
     </div>
 
     <div data-view="search-page" class="view" id="search-page">
@@ -51,6 +54,11 @@
     </div>
 
   </main>
+  <div data-view="personal-collection" id="personal-collection" class="view hidden">
+    <h2 class="user-collection">Personal Collection</h2>
+    <h4 class="no-entries-text">No objects in your collection. Start searching for inspiration!</h4>
+    <div class="container grid"></div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

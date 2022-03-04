@@ -210,3 +210,24 @@ h2 {
  margin: 12px;
  position: relative;
 }
+
+.fa-heart {
+ position: absolute;
+ right: 10px;
+ cursor: pointer;
+}
+
+.red-heart {
+  color: rgb(173, 55, 55);
+  cursor: pointer;
+}
+
+.no-entries-text {
+  text-align: center;
+  color: white;
+}
+
+.fa-chevron-left {
+  margin-right: 4px;
+  cursor: pointer;
+}
