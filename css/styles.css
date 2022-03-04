@@ -219,6 +219,7 @@ h2 {
 
 .red-heart {
   color: rgb(173, 55, 55);
+  cursor: pointer;
 }
 
 .no-entries-text {
@@ -228,4 +229,5 @@ h2 {
 
 .fa-chevron-left {
   margin-right: 4px;
+  cursor: pointer;
 }
