@@ -217,4 +217,15 @@ h2 {
  cursor: pointer;
 }
 
-/* personal collection  */
+.red-heart {
+  color: rgb(173, 55, 55);
+}
+
+.no-entries-text {
+  text-align: center;
+  color: white;
+}
+
+.fa-chevron-left {
+  margin-right: 4px;
+}
