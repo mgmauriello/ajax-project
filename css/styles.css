@@ -212,8 +212,8 @@ h2 {
 }
 
 .fa-heart {
- position: relative;
- left: 95%;
+ position: absolute;
+ right: 10px;
  cursor: pointer;
 }
 
