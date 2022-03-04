@@ -58,14 +58,7 @@
   .return-results-text, {
     font-size: 1rem;
   }
-  .column-display-img,
-  .column-display-text {
-    min-width: 375px
-  }
-
-  .column-display-img > img {
-  min-width: 50px;
-  min-height: 199px;
-  margin: 10px 10px 0;
+  .display-card {
+    min-width: 375px;
   }
 }

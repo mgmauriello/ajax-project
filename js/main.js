@@ -9,7 +9,12 @@ var $objectListing = document.querySelector('#object-listing');
 var $display = document.querySelector('#display-page');
 var $goBack = document.querySelector('#go-back');
 var $resultImg = document.querySelector('.result-img');
-$collectionAnchor = document.querySelector('.collection-page')
+var $collectionAnchor = document.querySelector('.collection-page')
+var $modalPopUp = document.querySelector('.modal-popup');
+var $confirmButton = document.querySelector('.confirm-btn');
+var $cancelButton = document.querySelector('.cancel-btn');
+var $noEntry = document.querySelector('.no-entries-text')
+var $navBar = document.querySelector('header')
 
 // search collection
 $searchForm.addEventListener('submit', searchCollection);
@@ -219,7 +224,6 @@ $personalCollection.addEventListener('click', function (event) {
 //delete modal
 
 var $modalPopUp = document.querySelector('.modal-popup');
-var $deleteButton = document.querySelector('#heart-icon');
 var $confirmButton = document.querySelector('.confirm-btn');
 var $cancelButton = document.querySelector('.cancel-btn');
 
@@ -247,9 +251,6 @@ $confirmButton.addEventListener('click', function (event) {
 });
 
 // view swapping
-
-var $noEntry = document.querySelector('.no-entries-text')
-
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') !== string) {

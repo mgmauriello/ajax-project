@@ -1,10 +1,9 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #202124;
-
 }
 
-h1 {
+h1.search-heading {
   color: white;
   font-size: 3rem;
   margin-bottom: 6px;
@@ -38,7 +37,9 @@ header {
 a:hover {
   text-decoration: none;
 }
+
 /* buttons */
+
 .nav-button {
   margin: 10px 8px;
   border: 1.5px solid #78a78f;
@@ -49,8 +50,7 @@ a:hover {
   font-size: .75rem;
 }
 
-.search-button,
-.enter-button {
+.search-button {
   padding: 10px 22px;
   margin: 10px;
   border: none;
@@ -61,14 +61,14 @@ a:hover {
   font-size: 1rem;
 }
 
-.search-button:hover,
-.enter-button:hover {
+.search-button:hover {
   color: rgb(180, 177, 177);
   background-color: rgb(37, 37, 37);
   cursor: pointer;
 }
 
 /* search bar */
+
 form {
   width: 100%;
 }
@@ -96,7 +96,6 @@ form {
   display: flex;
   justify-content: space-between;
   margin-right: 18px;
-
 }
 
 input.search-bar {
@@ -116,6 +115,7 @@ h2 {
   margin-left: 5%;
   font-size: 1.5em;
 }
+
 .card-wrapper {
   text-align: left;
 }
@@ -152,7 +152,6 @@ h2 {
   margin: 3px;
   text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
   color: white;
-
 }
 
 .card:hover {
@@ -164,6 +163,7 @@ h2 {
 #display-page {
   width: 100%;
 }
+
 .display-card {
   max-width: 876px;
   width: 100%;
@@ -200,6 +200,7 @@ h2 {
 }
 .return-results-text {
   cursor: pointer;
+  font-size: 1.4rem;
 }
 
 .column-display-img > img {
@@ -299,6 +300,7 @@ p.modal-text {
   font-size: .9rem;
   font-weight: bolder;
 }
+
 .show-modal {
   opacity: 1;
   visibility: visible;
