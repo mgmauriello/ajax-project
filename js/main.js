@@ -91,6 +91,7 @@ $results.addEventListener('click', function (event) {
   for (var i = 0; i < $previousDisplay.length; i++) {
     $previousDisplay[i].remove();
   }
+
 }, false);
 
 function showDisplayDetails(event) {
@@ -178,23 +179,31 @@ $collectionAnchor.addEventListener('click', function (event) {
   viewSwap('personal-collection')
 });
 
-$display.addEventListener('click', function (event) {
+$display.addEventListener('click', deleteModal)
+function deleteModal (event) {
+  if (event.target.className === 'fa-solid fa-heart red-heart') {
+    $modalPopUp.className = 'modal-popup show-modal';
+  } else {
+    $modalPopUp.className = 'modal-popup hidden';
+  }
+};
+
+$display.addEventListener('click', addToCollection);
+function addToCollection (event) {
   var $collectionId = event.target.getAttribute('data-entry-id');
   $collectionId = parseInt($collectionId);
   var $heart = document.querySelectorAll('i');
-
   if ((event.target.className === 'fa-regular fa-heart')) {
-    console.log('hi')
     for (var i = 0; i < data.results.length; i++) {
       if (data.results[i].ObjectID === $collectionId) {
         data.collections.push(data.results[i])
       }
     }
   }
-  if (event.target.className = 'fa-regular fa-heart') {
+  if (event.target.className === 'fa-regular fa-heart') {
     event.target.className = 'fa-solid fa-heart red-heart';
   }
-});
+};
 
 $personalCollection.addEventListener('click', function (event) {
   if (event.target.className === 'result-img') {
@@ -213,14 +222,6 @@ var $modalPopUp = document.querySelector('.modal-popup');
 var $deleteButton = document.querySelector('#heart-icon');
 var $confirmButton = document.querySelector('.confirm-btn');
 var $cancelButton = document.querySelector('.cancel-btn');
-
-$display.addEventListener('click', function (event) {
-  if (event.target.className = 'fa-solid fa-heart red-heart') {
-    $modalPopUp.className = 'modal-popup show-modal';
-  } else {
-    $modalPopUp.className = 'modal-popup hidden';
-  }
-});
 
 $cancelButton.addEventListener('click', function (event) {
   if (event.target.matches('.cancel-btn')) {
@@ -242,12 +243,13 @@ $confirmButton.addEventListener('click', function (event) {
   if (event.target.className = 'fa-solid fa-heart red-heart') {
     event.target.className = 'fa-regular fa-heart';
   }
-  $searchForm.reset();
   viewSwap('search-page')
 });
 
 // view swapping
+
 var $noEntry = document.querySelector('.no-entries-text')
+
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') !== string) {
@@ -257,7 +259,6 @@ function viewSwap(string) {
       $view[i].className = 'view';
     }
   }
-
   if (data.collections.length === 0) {
     $noEntry.className = 'no-entries-text';
   } else {

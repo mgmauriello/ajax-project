@@ -173,6 +173,7 @@ h2 {
   margin: 0 auto;
   box-shadow: 5px 5px 40px 1px grey;
   display: flex;
+  overflow: hidden;
 }
 
 .display-medium {
@@ -201,7 +202,7 @@ h2 {
   cursor: pointer;
 }
 
-.column-display-img> img {
+.column-display-img > img {
   width: 330px;
   height: 399px;
   margin: 10px 10px 0;
