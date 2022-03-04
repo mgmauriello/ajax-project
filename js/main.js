@@ -127,6 +127,7 @@ function renderDisplay(result) {
   $displayCard.appendChild($pieceDescription);
 
   var $heartIcon = document.createElement('i');
+  $heartIcon.setAttribute('id', 'heart-icon')
   $heartIcon.setAttribute('data-entry-id', result.ObjectID)
   if (data.collections.length === 0) {
     $heartIcon.className = 'fa-regular fa-heart';
@@ -205,6 +206,45 @@ $personalCollection.addEventListener('click', function (event) {
     $previousDisplay[i].remove();
   }
 }, false);
+
+//delete modal
+
+var $modalPopUp = document.querySelector('.modal-popup');
+var $deleteButton = document.querySelector('#heart-icon');
+var $confirmButton = document.querySelector('.confirm-btn');
+var $cancelButton = document.querySelector('.cancel-btn');
+
+$display.addEventListener('click', function (event) {
+  if (event.target.className = 'fa-solid fa-heart red-heart') {
+    $modalPopUp.className = 'modal-popup show-modal';
+  } else {
+    $modalPopUp.className = 'modal-popup hidden';
+  }
+});
+
+$cancelButton.addEventListener('click', function (event) {
+  if (event.target.matches('.cancel-btn')) {
+    $modalPopUp.className = 'modal-popup hidden';
+  } else {
+    $modalPopUp.className = 'modal-popup show-modal';
+  }
+});
+
+$confirmButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  $modalPopUp.className = 'modal-popup hidden';
+
+  for (var i = 0; i < data.collections.length; i++) {
+    if (data.collections[i].CollectionID === data.collections[i].CollectionID) {
+      data.collections.splice(i, 1);
+    }
+  }
+  if (event.target.className = 'fa-solid fa-heart red-heart') {
+    event.target.className = 'fa-regular fa-heart';
+  }
+  $searchForm.reset();
+  viewSwap('search-page')
+});
 
 // view swapping
 var $noEntry = document.querySelector('.no-entries-text')
