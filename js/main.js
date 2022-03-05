@@ -9,7 +9,12 @@ var $objectListing = document.querySelector('#object-listing');
 var $display = document.querySelector('#display-page');
 var $goBack = document.querySelector('#go-back');
 var $resultImg = document.querySelector('.result-img');
-$collectionAnchor = document.querySelector('.collection-page')
+var $collectionAnchor = document.querySelector('.collection-page')
+var $modalPopUp = document.querySelector('.modal-popup');
+var $confirmButton = document.querySelector('.confirm-btn');
+var $cancelButton = document.querySelector('.cancel-btn');
+var $noEntry = document.querySelector('.no-entries-text')
+var $navBar = document.querySelector('header')
 
 // search collection
 $searchForm.addEventListener('submit', searchCollection);
@@ -91,6 +96,7 @@ $results.addEventListener('click', function (event) {
   for (var i = 0; i < $previousDisplay.length; i++) {
     $previousDisplay[i].remove();
   }
+
 }, false);
 
 function showDisplayDetails(event) {
@@ -127,6 +133,7 @@ function renderDisplay(result) {
   $displayCard.appendChild($pieceDescription);
 
   var $heartIcon = document.createElement('i');
+  $heartIcon.setAttribute('id', 'heart-icon')
   $heartIcon.setAttribute('data-entry-id', result.ObjectID)
   if (data.collections.length === 0) {
     $heartIcon.className = 'fa-regular fa-heart';
@@ -177,23 +184,31 @@ $collectionAnchor.addEventListener('click', function (event) {
   viewSwap('personal-collection')
 });
 
-$display.addEventListener('click', function (event) {
+$display.addEventListener('click', deleteModal)
+function deleteModal (event) {
+  if (event.target.className === 'fa-solid fa-heart red-heart') {
+    $modalPopUp.className = 'modal-popup show-modal';
+  } else {
+    $modalPopUp.className = 'modal-popup hidden';
+  }
+};
+
+$display.addEventListener('click', addToCollection);
+function addToCollection (event) {
   var $collectionId = event.target.getAttribute('data-entry-id');
   $collectionId = parseInt($collectionId);
   var $heart = document.querySelectorAll('i');
-
   if ((event.target.className === 'fa-regular fa-heart')) {
-    console.log('hi')
     for (var i = 0; i < data.results.length; i++) {
       if (data.results[i].ObjectID === $collectionId) {
         data.collections.push(data.results[i])
       }
     }
   }
-  if (event.target.className = 'fa-regular fa-heart') {
+  if (event.target.className === 'fa-regular fa-heart') {
     event.target.className = 'fa-solid fa-heart red-heart';
   }
-});
+};
 
 $personalCollection.addEventListener('click', function (event) {
   if (event.target.className === 'result-img') {
@@ -206,8 +221,36 @@ $personalCollection.addEventListener('click', function (event) {
   }
 }, false);
 
+//delete modal
+
+var $modalPopUp = document.querySelector('.modal-popup');
+var $confirmButton = document.querySelector('.confirm-btn');
+var $cancelButton = document.querySelector('.cancel-btn');
+
+$cancelButton.addEventListener('click', function (event) {
+  if (event.target.matches('.cancel-btn')) {
+    $modalPopUp.className = 'modal-popup hidden';
+  } else {
+    $modalPopUp.className = 'modal-popup show-modal';
+  }
+});
+
+$confirmButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  $modalPopUp.className = 'modal-popup hidden';
+
+  for (var i = 0; i < data.collections.length; i++) {
+    if (data.collections[i].CollectionID === data.collections[i].CollectionID) {
+      data.collections.splice(i, 1);
+    }
+  }
+  if (event.target.className = 'fa-solid fa-heart red-heart') {
+    event.target.className = 'fa-regular fa-heart';
+  }
+  viewSwap('search-page')
+});
+
 // view swapping
-var $noEntry = document.querySelector('.no-entries-text')
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') !== string) {
@@ -217,7 +260,6 @@ function viewSwap(string) {
       $view[i].className = 'view';
     }
   }
-
   if (data.collections.length === 0) {
     $noEntry.className = 'no-entries-text';
   } else {

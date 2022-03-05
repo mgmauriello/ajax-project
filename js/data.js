@@ -2,7 +2,6 @@
 var data = {
   collections: [],
   results: [],
-  removeId: 0,
   view: '',
 };
 

@@ -58,4 +58,7 @@
   .return-results-text, {
     font-size: 1rem;
   }
+  .display-card {
+    min-width: 375px;
+  }
 }
