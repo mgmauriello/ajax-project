@@ -36,11 +36,33 @@ function searchCollection(event) {
   xhrSearch.open('GET', urlSearch);
   xhrSearch.responseType = 'json';
   xhrSearch.addEventListener('load', function () {
-    for (var r = 0; r < xhrSearch.response.Items.length; r++) {
+    if (!this.response.Items) {
+      var $noResults = document.createElement('div');
+      $noResults.className = 'no-results';
+      $results.appendChild($noResults);
+
+      var $noResultsText = document.createElement('h3');
+      $noResults.appendChild($noResultsText);
+      $noResultsText.textContent = 'No results were found. Try again.';
+
+      return $noResults;
+    } else if (this.response.Items) {
+      for (var r = 0; r < xhrSearch.response.Items.length; r++) {
       data.results.push(xhrSearch.response.Items[r]);
       var render = renderResults(xhrSearch.response.Items[r]);
       $results.appendChild(render);
-    }
+      }
+    } else {
+        var $error = document.createElement('div');
+        $error.className = 'no-results';
+        $results.appendChild($error);
+
+        var $errorText = document.createElement('h3');
+        $error.appendChild($errorText);
+        $errorText.textContent = 'Trouble connecting to the network. Please try again later.';
+
+        return $error;
+      }
   });
 
   $resultSearchText.textContent = 'Search results for ' + '"' + $search.value + '"';
