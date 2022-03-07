@@ -29,6 +29,10 @@
   width: 60%;
 }
 
+#display-page {
+  width: 100%;
+}
+
 .search-container {
   padding: 5rem 0 5.3125rem;
   display: block;
@@ -52,6 +56,7 @@
   h2 {
   font-size: 1.5em;
   }
+
   .display-card {
     max-width: 876px;
     width: 100%;
@@ -61,12 +66,35 @@
     margin: 0 auto;
     box-shadow: 5px 5px 40px 1px grey;
     display: flex;
-    overflow: hidden;
+    overflow: auto;
   }
+
   .column-display-img > img {
   width: 330px;
   height: 399px;
   margin: 0.625rem 0.625rem 0;
+  }
+
+  .fa-heart {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  }
+
+  .display-title {
+    font-size: 1.2rem;
+  }
+
+  .display-creator {
+    font-size: .9rem;
+  }
+
+  .display-desc {
+    font-size: .89rem;
+    padding: 0.625rem 0;
+  }
+  .display-medium {
+    font-size: 1rem;
   }
 }
 
@@ -77,16 +105,48 @@
   #display-page {
     min-width: 375px;
   }
+
   .search-heading  {
     font-size: 2rem;
   }
+
   h2 {
     font-size: 1rem;
   }
+
   .display-card {
     min-width: 375px;
+    display: block;
   }
+
+  .column-display-img {
+    width: 100%;
+    margin: 10px 55px 0;
+  }
+
+  .column-display-text {
+    width: 100%;
+  }
+
   .column-display-img > img {
-  width: 250px;
-  height: 150px;
+    width: 270px;
+    height: 258px;
+  }
+
+  .fa-heart {
+    position: absolute;
+    right: 19px;
+  }
+
+  .display-title {
+    font-size: .95rem;
+  }
+
+  .display-medium {
+    font-size: .8rem;
+  }
+
+  .display-desc {
+    font-size: .82rem;
+  }
 }

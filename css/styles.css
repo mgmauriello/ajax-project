@@ -153,39 +153,9 @@ h2 {
   transform: scale(1.1);
 }
 
-#display-page {
-  width: 100%;
-}
-
-/* .display-card {
-  max-width: 876px;
-  width: 100%;
-  height: 431px;
-  background: #EAEAEA;
-  border-radius: 10px;
-  margin: 0 auto;
-  box-shadow: 5px 5px 40px 1px grey;
-  display: flex;
-  overflow: hidden;
-} */
-
 .display-medium {
-  font: .75rem;
   color: #535151;
   font-style: italic;
-}
-
-.display-title {
-  font-size: 1.2rem;
-}
-
-.display-creator {
-  font-size: .9rem;
-}
-
-.display-desc {
-  font-size: .89rem;
-  padding: 0.625rem 0;
 }
 
 .display-img {
@@ -195,21 +165,9 @@ h2 {
   cursor: pointer;
 }
 
-/* .column-display-img > img {
-  width: 330px;
-  height: 399px;
-  margin: 0.625rem 0.625rem 0;
-} */
-
 .piece-description {
  margin: 0.75rem;
  position: relative;
-}
-
-.fa-heart {
- position: absolute;
- right: 10px;
- cursor: pointer;
 }
 
 .red-heart {
