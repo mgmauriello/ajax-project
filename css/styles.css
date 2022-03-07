@@ -3,9 +3,8 @@ body {
   background-color: #202124;
 }
 
-h1.search-heading {
+.search-heading {
   color: white;
-  font-size: 3rem;
   margin-bottom: 0.4375rem;
   font-weight: 500;
 }
@@ -110,7 +109,6 @@ input::placeholder {
 h2 {
   color: white;
   margin-left: 5%;
-  font-size: 1.5em;
 }
 
 .card-wrapper {
@@ -159,7 +157,7 @@ h2 {
   width: 100%;
 }
 
-.display-card {
+/* .display-card {
   max-width: 876px;
   width: 100%;
   height: 431px;
@@ -169,7 +167,7 @@ h2 {
   box-shadow: 5px 5px 40px 1px grey;
   display: flex;
   overflow: hidden;
-}
+} */
 
 .display-medium {
   font: .75rem;
@@ -195,14 +193,13 @@ h2 {
 }
 .return-results-text {
   cursor: pointer;
-  font-size: 1.4rem;
 }
 
-.column-display-img > img {
+/* .column-display-img > img {
   width: 330px;
   height: 399px;
   margin: 0.625rem 0.625rem 0;
-}
+} */
 
 .piece-description {
  margin: 0.75rem;

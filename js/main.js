@@ -13,9 +13,9 @@ var $collectionAnchor = document.querySelector('.collection-page')
 var $modalPopUp = document.querySelector('.modal-popup');
 var $confirmButton = document.querySelector('.confirm-btn');
 var $cancelButton = document.querySelector('.cancel-btn');
-var $personalCollection = document.querySelector('#personal-collection')
-var $noEntry = document.querySelector('.no-entries-text')
-var $navBar = document.querySelector('header')
+var $personalCollection = document.querySelector('#personal-collection');
+var $noEntry = document.querySelector('.no-entries-text');
+var $navBar = document.querySelector('header');
 
 // search collection
 $searchForm.addEventListener('submit', searchCollection);
@@ -56,7 +56,7 @@ function searchCollection(event) {
 function renderResults(result) {
   var $grid = document.createElement('div');
   $grid.className = 'grid';
-  $grid.setAttribute('data-entry-id', result.ObjectID)
+  $grid.setAttribute('data-entry-id', result.ObjectID);
   $objectListing.appendChild($grid);
 
   var $cardWrapper = document.createElement('div');
@@ -65,7 +65,7 @@ function renderResults(result) {
 
   var $card = document.createElement('div');
   $card.className = 'card result-description';
-  $card.setAttribute('data-entry-id', result.ObjectID)
+  $card.setAttribute('data-entry-id', result.ObjectID);
   $cardWrapper.appendChild($card);
 
   var $img = document.createElement('img');
@@ -144,7 +144,7 @@ function renderDisplay(result) {
         $heartIcon.className = 'fa-solid fa-heart red-heart';
         break;
       } else {
-        $heartIcon.className = 'fa-regular fa-heart'
+        $heartIcon.className = 'fa-regular fa-heart';
       }
     }
   }
