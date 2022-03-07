@@ -13,6 +13,7 @@ var $collectionAnchor = document.querySelector('.collection-page')
 var $modalPopUp = document.querySelector('.modal-popup');
 var $confirmButton = document.querySelector('.confirm-btn');
 var $cancelButton = document.querySelector('.cancel-btn');
+var $personalCollection = document.querySelector('#personal-collection')
 var $noEntry = document.querySelector('.no-entries-text')
 var $navBar = document.querySelector('header')
 
@@ -100,7 +101,7 @@ $results.addEventListener('click', function (event) {
 }, false);
 
 function showDisplayDetails(event) {
-  var $objectID = event.target.closest('div').getAttribute('data-entry-id')
+  var $objectID = event.target.closest('div').getAttribute('data-entry-id');
   var xhr = new XMLHttpRequest();
   var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var apiEndpoint = baseAPIEndpoint + '&ObjectID=' + $objectID;
@@ -117,7 +118,7 @@ function showDisplayDetails(event) {
 function renderDisplay(result) {
   var $displayCard = document.createElement('div');
   $displayCard.className = 'display-card';
-  $displayCard.setAttribute('id', 'detail-page-render')
+  $displayCard.setAttribute('id', 'detail-page-render');
 
   var $columnDisplayImg = document.createElement('div');
   $columnDisplayImg.className = 'column-display-img';
@@ -133,7 +134,7 @@ function renderDisplay(result) {
   $displayCard.appendChild($pieceDescription);
 
   var $heartIcon = document.createElement('i');
-  $heartIcon.setAttribute('id', 'heart-icon')
+  $heartIcon.setAttribute('id', 'heart-icon');
   $heartIcon.setAttribute('data-entry-id', result.ObjectID)
   if (data.collections.length === 0) {
     $heartIcon.className = 'fa-regular fa-heart';
@@ -173,7 +174,6 @@ function renderDisplay(result) {
 }
 
 // add to collection
-var $personalCollection = document.querySelector('#personal-collection')
 $collectionAnchor.addEventListener('click', function (event) {
   if (data.collections !== 0) {
     for (var c = 0; c < data.collections.length; c++) {
@@ -181,7 +181,7 @@ $collectionAnchor.addEventListener('click', function (event) {
       $personalCollection.appendChild(renderCollections);
     }
   }
-  viewSwap('personal-collection')
+  viewSwap('personal-collection');
 });
 
 $display.addEventListener('click', deleteModal)
@@ -201,7 +201,7 @@ function addToCollection (event) {
   if ((event.target.className === 'fa-regular fa-heart')) {
     for (var i = 0; i < data.results.length; i++) {
       if (data.results[i].ObjectID === $collectionId) {
-        data.collections.push(data.results[i])
+        data.collections.push(data.results[i]);
       }
     }
   }
@@ -220,12 +220,6 @@ $personalCollection.addEventListener('click', function (event) {
     $previousDisplay[i].remove();
   }
 }, false);
-
-//delete modal
-
-var $modalPopUp = document.querySelector('.modal-popup');
-var $confirmButton = document.querySelector('.confirm-btn');
-var $cancelButton = document.querySelector('.cancel-btn');
 
 $cancelButton.addEventListener('click', function (event) {
   if (event.target.matches('.cancel-btn')) {
@@ -247,10 +241,9 @@ $confirmButton.addEventListener('click', function (event) {
   if (event.target.className = 'fa-solid fa-heart red-heart') {
     event.target.className = 'fa-regular fa-heart';
   }
-  viewSwap('search-page')
+  viewSwap('search-page');
 });
 
-// view swapping
 function viewSwap(string) {
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') !== string) {

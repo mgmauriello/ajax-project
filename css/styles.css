@@ -6,16 +6,16 @@ body {
 h1.search-heading {
   color: white;
   font-size: 3rem;
-  margin-bottom: 6px;
+  margin-bottom: 0.4375rem;
   font-weight: 500;
 }
 
-/* navbar  */
+/* header  */
 
 a {
   text-decoration: none;
   color: #78a78f;
-  padding-left: 2px;
+  padding-left: 0.125rem;
 }
 .header-logo {
   color: white;
@@ -31,14 +31,12 @@ header {
   color: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 0.625rem;
 }
 
 a:hover {
   text-decoration: none;
 }
-
-/* buttons */
 
 .nav-button {
   margin: 10px 8px;
@@ -79,11 +77,11 @@ form {
   box-shadow: none;
   border-radius: 24px;
   margin: 0 auto;
-  padding-left: 34px;
+  padding-left: 2.125rem;
   color: white;
   text-align: left;
   height: 44px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .fa-magnifying-glass {
@@ -95,7 +93,7 @@ form {
 .input-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-right: 18px;
+  margin-right: 1.125rem;
 }
 
 input.search-bar {
@@ -111,7 +109,6 @@ input::placeholder {
 
 h2 {
   color: white;
-  position: relative;
   margin-left: 5%;
   font-size: 1.5em;
 }
@@ -158,8 +155,6 @@ h2 {
   transform: scale(1.1);
 }
 
-/* display */
-
 #display-page {
   width: 100%;
 }
@@ -192,7 +187,7 @@ h2 {
 
 .display-desc {
   font-size: .89rem;
-  padding: 10px 0;
+  padding: 0.625rem 0;
 }
 
 .display-img {
@@ -206,11 +201,11 @@ h2 {
 .column-display-img > img {
   width: 330px;
   height: 399px;
-  margin: 10px 10px 0;
+  margin: 0.625rem 0.625rem 0;
 }
 
 .piece-description {
- margin: 12px;
+ margin: 0.75rem;
  position: relative;
 }
 
@@ -231,11 +226,9 @@ h2 {
 }
 
 .fa-chevron-left {
-  margin-right: 4px;
+  margin-right: 0.25rem;
   cursor: pointer;
 }
-
-/* user can delete item */
 
 .modal-popup {
   position: fixed;
@@ -257,13 +250,13 @@ h2 {
   width: 319px;
   height: 131px;
   text-align: center;
-  padding: 28px 12px;
+  padding: 1.75rem 0.75rem;
   position: absolute;
   border-radius: 4px;
 }
 
 .confirm-btn {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: white;
   background-color: #78A78F;
   height: 32px;
@@ -272,11 +265,11 @@ h2 {
   border: #78A78F;
   box-shadow: 2px 0 5px grey;
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 3.125rem;
 }
 
 .cancel-btn {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: black;
   background-color: grey;
   width: 84px;
@@ -285,13 +278,13 @@ h2 {
   border: grey;
   box-shadow: 2px 0 5px grey;
   cursor: pointer;
-  margin-right: 50px;
+  margin-right: 3.125rem;
 }
 
 p.modal-text {
   font-size: .9rem;
   font-weight: bolder;
-  margin: 10px 0 29px;
+  margin: 0.625rem 0 1.8125rem;
 }
 
 .show-modal {
