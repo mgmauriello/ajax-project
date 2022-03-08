@@ -25,6 +25,10 @@
   <main>
     <div data-view="result-display" id="display-page" class="view hidden">
       <h2 id="go-back" class="return-results-text"><i class="fa-solid fa-chevron-left"></i>Back</h2>
+      <div id="display-spinner" class="lds-ripple hidden">
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div data-view="search-page" class="view" id="search-page">
       <div id="searching" class="container form-search search-container center">
@@ -59,7 +63,7 @@
     </div>
     <div data-view="search-results" id="results" class="view hidden">
       <h2 class="result-search-text"></h2>
-      <div id="load-spinner" class="lds-ripple">
+      <div id="load-spinner" class="lds-ripple hidden">
         <div></div>
         <div></div>
       </div>

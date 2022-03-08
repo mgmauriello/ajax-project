@@ -22,6 +22,9 @@ var $navBar = document.querySelector('header');
 $searchForm.addEventListener('submit', searchCollection);
 function searchCollection(event) {
   event.preventDefault();
+
+  $loadSpinner.className = 'lds-ripple';
+
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
@@ -127,7 +130,10 @@ $results.addEventListener('click', function (event) {
 
 }, false);
 
+var $displaySpinner = document.querySelector('#display-spinner')
 function showDisplayDetails(event) {
+  $displaySpinner.className = 'lds-ripple';
+
   var $objectID = event.target.closest('div').getAttribute('data-entry-id');
   var xhr = new XMLHttpRequest();
   var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
@@ -137,6 +143,7 @@ function showDisplayDetails(event) {
   xhr.addEventListener('load', function () {
     var $displayDetails = renderDisplay(xhr.response.Items[0]);
     $display.appendChild($displayDetails);
+    $displaySpinner.className = 'lds-ripple hidden';
   });
   xhr.send();
   viewSwap('result-display');
