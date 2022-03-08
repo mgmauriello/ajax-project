@@ -45,6 +45,7 @@ function searchCollection(event) {
       var $noResultsText = document.createElement('h3');
       $noResults.appendChild($noResultsText);
       $noResultsText.textContent = 'No results were found. Try again.';
+      $loadSpinner.className = 'lds-ripple hidden';
 
       return $noResults;
     } else if (this.response.Items) {
@@ -52,7 +53,7 @@ function searchCollection(event) {
         data.results.push(xhrSearch.response.Items[r]);
         var render = renderResults(xhrSearch.response.Items[r]);
         $results.appendChild(render);
-        $loadSpinner.className = 'lds-ripple hidden'
+        $loadSpinner.className = 'lds-ripple hidden';
       }
     } else {
         var $error = document.createElement('div');
@@ -62,6 +63,7 @@ function searchCollection(event) {
         var $errorText = document.createElement('h3');
         $error.appendChild($errorText);
         $errorText.textContent = 'Trouble connecting to the network. Please try again later.';
+        $loadSpinner.className = 'lds-ripple hidden';
 
         return $error;
       }
