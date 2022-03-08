@@ -130,7 +130,8 @@ $results.addEventListener('click', function (event) {
 
 }, false);
 
-var $displaySpinner = document.querySelector('#display-spinner')
+var $displaySpinner = document.querySelector('#display-spinner');
+
 function showDisplayDetails(event) {
   $displaySpinner.className = 'lds-ripple';
 
