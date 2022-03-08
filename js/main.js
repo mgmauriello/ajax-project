@@ -1,5 +1,6 @@
 var $searchForm = document.querySelector('#search-form');
 var $searchAnchor = document.querySelector('.search-page');
+var $loadSpinner = document.querySelector('#load-spinner')
 var $search = document.querySelector('#search');
 var $results = document.querySelector('#results');
 var $view = document.querySelectorAll('.view');
@@ -13,14 +14,17 @@ var $collectionAnchor = document.querySelector('.collection-page')
 var $modalPopUp = document.querySelector('.modal-popup');
 var $confirmButton = document.querySelector('.confirm-btn');
 var $cancelButton = document.querySelector('.cancel-btn');
-var $personalCollection = document.querySelector('#personal-collection')
-var $noEntry = document.querySelector('.no-entries-text')
-var $navBar = document.querySelector('header')
+var $personalCollection = document.querySelector('#personal-collection');
+var $noEntry = document.querySelector('.no-entries-text');
+var $navBar = document.querySelector('header');
 
 // search collection
 $searchForm.addEventListener('submit', searchCollection);
 function searchCollection(event) {
   event.preventDefault();
+
+  $loadSpinner.className = 'lds-ripple';
+
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
@@ -36,11 +40,37 @@ function searchCollection(event) {
   xhrSearch.open('GET', urlSearch);
   xhrSearch.responseType = 'json';
   xhrSearch.addEventListener('load', function () {
-    for (var r = 0; r < xhrSearch.response.Items.length; r++) {
-      data.results.push(xhrSearch.response.Items[r]);
-      var render = renderResults(xhrSearch.response.Items[r]);
-      $results.appendChild(render);
-    }
+    if (!this.response.Items) {
+      var $noResults = document.createElement('div');
+      $noResults.className = 'no-results';
+      $results.appendChild($noResults);
+
+      var $noResultsText = document.createElement('h3');
+      $noResults.appendChild($noResultsText);
+      $noResultsText.textContent = 'No results were found. Try again.';
+      $loadSpinner.className = 'lds-ripple hidden';
+
+      return $noResults;
+    } else if (this.response.Items) {
+      for (var r = 0; r < xhrSearch.response.Items.length; r++) {
+        data.results.push(xhrSearch.response.Items[r]);
+        var render = renderResults(xhrSearch.response.Items[r]);
+        $results.appendChild(render);
+        $loadSpinner.className = 'lds-ripple hidden';
+      }
+    } else {
+        var $error = document.createElement('div');
+        $error.className = 'no-results';
+        $results.appendChild($error);
+
+        var $errorText = document.createElement('h3');
+        $error.appendChild($errorText);
+        $errorText.textContent = 'Trouble connecting to the network. Please try again later.';
+        $loadSpinner.className = 'lds-ripple hidden';
+
+        return $error;
+      }
+
   });
 
   $resultSearchText.textContent = 'Search results for ' + '"' + $search.value + '"';
@@ -56,7 +86,7 @@ function searchCollection(event) {
 function renderResults(result) {
   var $grid = document.createElement('div');
   $grid.className = 'grid';
-  $grid.setAttribute('data-entry-id', result.ObjectID)
+  $grid.setAttribute('data-entry-id', result.ObjectID);
   $objectListing.appendChild($grid);
 
   var $cardWrapper = document.createElement('div');
@@ -65,7 +95,7 @@ function renderResults(result) {
 
   var $card = document.createElement('div');
   $card.className = 'card result-description';
-  $card.setAttribute('data-entry-id', result.ObjectID)
+  $card.setAttribute('data-entry-id', result.ObjectID);
   $cardWrapper.appendChild($card);
 
   var $img = document.createElement('img');
@@ -100,7 +130,11 @@ $results.addEventListener('click', function (event) {
 
 }, false);
 
+var $displaySpinner = document.querySelector('#display-spinner');
+
 function showDisplayDetails(event) {
+  $displaySpinner.className = 'lds-ripple';
+
   var $objectID = event.target.closest('div').getAttribute('data-entry-id');
   var xhr = new XMLHttpRequest();
   var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
@@ -110,6 +144,7 @@ function showDisplayDetails(event) {
   xhr.addEventListener('load', function () {
     var $displayDetails = renderDisplay(xhr.response.Items[0]);
     $display.appendChild($displayDetails);
+    $displaySpinner.className = 'lds-ripple hidden';
   });
   xhr.send();
   viewSwap('result-display');
@@ -144,7 +179,7 @@ function renderDisplay(result) {
         $heartIcon.className = 'fa-solid fa-heart red-heart';
         break;
       } else {
-        $heartIcon.className = 'fa-regular fa-heart'
+        $heartIcon.className = 'fa-regular fa-heart';
       }
     }
   }
