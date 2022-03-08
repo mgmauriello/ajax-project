@@ -1,5 +1,6 @@
 var $searchForm = document.querySelector('#search-form');
 var $searchAnchor = document.querySelector('.search-page');
+var $loadSpinner = document.querySelector('#load-spinner')
 var $search = document.querySelector('#search');
 var $results = document.querySelector('#results');
 var $view = document.querySelectorAll('.view');
@@ -48,9 +49,10 @@ function searchCollection(event) {
       return $noResults;
     } else if (this.response.Items) {
       for (var r = 0; r < xhrSearch.response.Items.length; r++) {
-      data.results.push(xhrSearch.response.Items[r]);
-      var render = renderResults(xhrSearch.response.Items[r]);
-      $results.appendChild(render);
+        data.results.push(xhrSearch.response.Items[r]);
+        var render = renderResults(xhrSearch.response.Items[r]);
+        $results.appendChild(render);
+        $loadSpinner.className = 'lds-ripple hidden'
       }
     } else {
         var $error = document.createElement('div');
@@ -63,6 +65,7 @@ function searchCollection(event) {
 
         return $error;
       }
+
   });
 
   $resultSearchText.textContent = 'Search results for ' + '"' + $search.value + '"';
