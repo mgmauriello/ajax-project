@@ -81,6 +81,7 @@ function searchCollection(event) {
   viewSwap('search-results');
 }
 
+
 // user can view search
 
 function renderResults(result) {
