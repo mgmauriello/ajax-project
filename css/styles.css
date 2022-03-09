@@ -324,4 +324,5 @@ p.modal-text {
  border-radius: 12px;
  position: fixed;
  left: 10px;
+ bottom: 10px;
 }
