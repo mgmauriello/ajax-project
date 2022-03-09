@@ -27,7 +27,7 @@ function searchCollection(event) {
 
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
-  var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&keyword=' + query
+  var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&pageSize=200&keyword=' + query
 
   var $resultList = document.querySelectorAll('.results');
   for (var i = 0; i < $resultList.length; i++) {
@@ -101,6 +101,9 @@ function renderResults(result) {
   var $img = document.createElement('img');
   $img.className = 'result-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
+  if (result.PrimaryImage.Raw === null) {
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  }
   $card.appendChild($img);
 
   var $resultName = document.createElement('p');
@@ -162,6 +165,9 @@ function renderDisplay(result) {
   var $img = document.createElement('img');
   $img.className = 'display-img';
   $img.setAttribute('src', result.PrimaryImage.Raw);
+  if (result.PrimaryImage.Raw === null) {
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  }
   $columnDisplayImg.appendChild($img);
 
   var $pieceDescription = document.createElement('div');
