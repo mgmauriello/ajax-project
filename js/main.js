@@ -36,6 +36,7 @@ function searchCollection(event) {
   data.results = [];
 
   var xhrSearch = new XMLHttpRequest();
+  xhrSearch.response
 
   xhrSearch.open('GET', urlSearch);
   xhrSearch.responseType = 'json';
