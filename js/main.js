@@ -27,7 +27,7 @@ function searchCollection(event) {
 
   var query = $search.value
   var apiKey = 'eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
-  var urlSearch = 'http://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&pageSize=200&keyword=' + query
+  var urlSearch = 'https://api.thewalters.org/v1/objects?&apikey=' + apiKey + '&pageSize=200&keyword=' + query
 
   var $resultList = document.querySelectorAll('.results');
   for (var i = 0; i < $resultList.length; i++) {
@@ -140,7 +140,7 @@ function showDisplayDetails(event) {
 
   var $objectID = event.target.closest('div').getAttribute('data-entry-id');
   var xhr = new XMLHttpRequest();
-  var baseAPIEndpoint = 'http://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
+  var baseAPIEndpoint = 'https://api.thewalters.org/v1/objects?&apikey=eKwvPndHvOjlYmpwQv1wixCkIa0a8fXgLbaSEFnIBTJeDReQj7u8vDwh8Ccon29F'
   var apiEndpoint = baseAPIEndpoint + '&ObjectID=' + $objectID;
   xhr.open('GET', apiEndpoint);
   xhr.responseType = 'json';
