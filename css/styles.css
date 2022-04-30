@@ -7,22 +7,45 @@ body {
   background-color: #202124;
 }
 
-.search-heading {
+h2,
+footer,
+.search-heading,
+.header-logo,
+.result-description,
+.no-entries-text,
+.search-bar,
+.confirm-btn {
   color: white;
+}
+
+.nav-button,
+.search-button,
+.search-button:hover,
+.card,
+.return-results-text
+.red-heart,
+.fa-chevron-left,
+.confirm-btn,
+.cancel-btn {
+  cursor: pointer;
+}
+
+
+
+
+.search-heading {
   margin-bottom: 0.4375rem;
   font-weight: 500;
 }
 
 h3 {
   text-align: center;
-  color: white;
 }
 
 footer {
   position: fixed;
   bottom: 0;
   left: 10px;
-  color: white;
   font-size: 0.625rem;
 }
 
@@ -34,7 +57,6 @@ a {
   padding-left: 0.125rem;
 }
 .header-logo {
-  color: white;
   font-weight: bold;
 }
 
@@ -44,7 +66,6 @@ header {
   margin: 0;
   line-height: 50px;
   font-weight: 300;
-  color: #fff;
   display: flex;
   justify-content: space-between;
   padding: 0 0.625rem;
@@ -60,7 +81,6 @@ a:hover {
   color: #78a78f;
   border-radius: 5px;
   background-color: transparent;
-  cursor: pointer;
   font-size: 0.75rem;
 }
 
@@ -71,14 +91,12 @@ a:hover {
   color: white;
   border-radius: 5px;
   background-color: #303134;
-  cursor: pointer;
   font-size: 1rem;
 }
 
 .search-button:hover {
   color: rgb(180, 177, 177);
   background-color: rgb(37, 37, 37);
-  cursor: pointer;
 }
 
 /* search bar */
@@ -86,6 +104,7 @@ a:hover {
 form {
   width: 100%;
 }
+
 .search-bar {
   display: flex;
   background: #202124;
@@ -94,18 +113,18 @@ form {
   border-radius: 24px;
   margin: 0 auto;
   padding-left: 2.125rem;
-  color: white;
   text-align: left;
   height: 44px;
   font-size: 0.875rem;
 }
 
-.fa-magnifying-glass {
+.search-bar-icon {
   color: white;
   text-align: left;
   position: relative;
   left: 26px;
 }
+
 .input-wrapper {
   display: flex;
   justify-content: space-between;
@@ -124,7 +143,6 @@ input::placeholder {
 /* search results */
 
 h2 {
-  color: white;
   margin-left: 5%;
 }
 
@@ -149,7 +167,6 @@ h2 {
   max-width: 18rem;
   padding: 0.5rem;
   margin-bottom: 2rem;
-  cursor: pointer;
   transform: scale(1);
   transition: transform 0.5s;
 }
@@ -163,7 +180,6 @@ h2 {
   font-size: .75rem;
   margin: 3px;
   text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
-  color: white;
 }
 
 .card:hover {
@@ -178,9 +194,7 @@ h2 {
 .display-img {
   box-shadow: 4px 3px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.return-results-text {
-  cursor: pointer;
-}
+
 
 .piece-description {
  margin: 0.75rem;
@@ -189,17 +203,14 @@ h2 {
 
 .red-heart {
   color: rgb(173, 55, 55);
-  cursor: pointer;
 }
 
 .no-entries-text {
   text-align: center;
-  color: white;
 }
 
 .fa-chevron-left {
   margin-right: 0.25rem;
-  cursor: pointer;
 }
 
 .modal-popup {
@@ -229,14 +240,12 @@ h2 {
 
 .confirm-btn {
   font-size: 0.875rem;
-  color: white;
   background-color: #78A78F;
   height: 32px;
   width: 84px;
   border-radius: 4px;
   border: #78A78F;
   box-shadow: 2px 0 5px grey;
-  cursor: pointer;
   margin-left: 3.125rem;
 }
 
@@ -249,7 +258,6 @@ h2 {
   border-radius: 4px;
   border: grey;
   box-shadow: 2px 0 5px grey;
-  cursor: pointer;
   margin-right: 3.125rem;
 }
 
@@ -314,7 +322,7 @@ p.modal-text {
   }
 }
 
-.top {
+.return-to-top {
  text-decoration: none;
  padding: 10px;
  font-family: sans-serif;
