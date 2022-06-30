@@ -14,7 +14,7 @@ The Youseum was a sort of passion project. It is a way for the user to make a mu
 
 ## Live Demo
 
-Try the application live at [https://mgmauriello.github.io/youseum/](https://mgmauriello.github.io/youseum/)
+~~Try the application live at [https://mgmauriello.github.io/youseum/](https://mgmauriello.github.io/youseum/)~~ Live unavailable due to API being offline.
 
 ## Features
 
